@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Keyboard, Image, Text, StatusBarIOS } from 'react-native';
+import { Keyboard, Image, Text } from 'react-native';
 import api from '../../services/api';
 import logo1 from '../../assets/git.png';
 import logo2 from '../../assets/AH.png';

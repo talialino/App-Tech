@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Image, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import logo from '../../assets/fb.png';
 
 import api from '../../services/api';
 
@@ -19,7 +18,7 @@ import {
 
 export default class User extends Component {
     static navigationOptions = ({ navigation }) => ({
-       // title: navigation.getParam('user').name,
+        // title: navigation.getParam('user').name,
     });
 
     state = {
@@ -39,10 +38,6 @@ export default class User extends Component {
     render() {
         return (
             <Container>
-                <Form>
-                    <Image source={logo} />
-                </Form>
-
                 <Title>
                     <Text>Faceboook</Text>
                 </Title>
