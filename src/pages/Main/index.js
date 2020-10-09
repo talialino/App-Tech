@@ -34,15 +34,16 @@ export default class Main extends Component {
         title: 'Usuários',
     };
 
-    state = {
-        newUser: '',
-        users: [],
-    };
-
     static propTypes = {
         navigation: PropTypes.shape({
             navigate: PropTypes.func,
         }).isRequired,
+    };
+
+    state = {
+        newUser: '',
+        users: [],
+        loading: false,
     };
 
     handleAddUser = async () => {
@@ -101,15 +102,9 @@ export default class Main extends Component {
                             this.setState({ newUser: text })
                         }
                         returnKeyType="send"
-                        onSubmitEditing={() =>
-                            // this.handleNavigate(this.handleAddUser)
-                            this.handleAddUser
-                        }
+                        onSubmitEditing={() => this.handleNavigate(users)}
                     />
-                    <SubmitButton
-                        onPress={this.handleAddUser}
-                        // onPress={() => this.handleNavigate(this.handleAddUser)}
-                    >
+                    <SubmitButton onPress={this.handleAddUser}>
                         <Text>Busca</Text>
                     </SubmitButton>
                 </Form>
@@ -147,6 +142,11 @@ export default class Main extends Component {
                                     <StarCount>{item.reposstar}</StarCount>
                                     <ForksCount>{item.reposforks}</ForksCount>
                                 </Barra>
+                                <SubmitButton
+                                    onPress={() => this.handleNavigate(item)}
+                                >
+                                    <Text>Ver completo</Text>
+                                </SubmitButton>
                             </CardRepository>
                         </>
                     )}
@@ -155,15 +155,4 @@ export default class Main extends Component {
         );
     }
 }
-// navigation.navigate('User')
-/** <SubmitButton
-                        onPress={() => {
-                            navigation.navigate('User');
-                        }}
-                    > */
 
-/** onSubmitEditing={() => {
-                            navigation.navigate('User');
-                        }} */
-
-// { navigation }
