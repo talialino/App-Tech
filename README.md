@@ -5,9 +5,9 @@
  #### O que tem nessa App:
  - [x] Página de busca do usuário
  - [x] Consumo da API do GitHubo 
- - [x] Página com lista de repositórios do usuário informado
+ - [x] Página com repositório do usuário modelo.
  
- O dado digitado na barra da tela inicial, deve ser o nome da conta do usuário no GitHub (não o nome de perfil). Quando o botão de busca for pressionado, ou o botão de enviar do teclado, uma chamada na API do GitHub é feita e os dados coletados aparecem em uma nova tela. Esses dados são a foto, nome do perfil do usuário, biografia, quantidade de repositórios, número de seguidores, número de quem está seguindo e informações sobre os repositórios.
+ O dado digitado na barra da tela inicial, deve ser o nome da conta do usuário no GitHub (não o nome de perfil). Quando o botão de busca for pressionado, ou o botão de enviar do teclado, uma chamada na API do GitHub é feita e os dados coletados aparecem na mesma tela, com a opção de botão para visualizar todo o conteúdo. Esses dados são a foto, nome do perfil do usuário, biografia, quantidade de repositórios, número de seguidores e número de quantos está seguindo.
  
  #### Tecnologias utilizadas
  - React Native
