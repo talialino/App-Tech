@@ -102,7 +102,7 @@ export default class Main extends Component {
                             this.setState({ newUser: text })
                         }
                         returnKeyType="send"
-                        onSubmitEditing={() => this.handleNavigate(users)}
+                        onSubmitEditing={this.handleAddUser}
                     />
                     <SubmitButton onPress={this.handleAddUser}>
                         <Text>Busca</Text>
