@@ -50,18 +50,3 @@ export const FormBotton = styled.View`
     background: #eee;
 `;
 
-
-
-/*
-
-export const LinksData = styled.Text`
-    flex-direction: row;
-    align-self: stretch;
-    margin-top: 50px;
-    align-items: center;
-`;
-
-//    margin-left: 0px;
-//    flex: 1;
-//    flex-direction: row; --> um do lado do outro
-*/
