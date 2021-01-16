@@ -1,9 +1,19 @@
-import React from 'react';
-import { Image, Text } from 'react-native';
+import React, { useContext } from 'react';
+import { Text } from 'react-native';
 
-import logo from '../../assets/fbicon.png';
 import {
     Container,
+    Avatar,
+    Name,
+    Bio,
+    Barra,
+    List,
+    CardRepository,
+    RepoDesc,
+    RepoLang,
+    RepoName,
+    ForksCount,
+    StarCount,
     Title,
     SubTitle,
     TextDesc,
@@ -11,66 +21,78 @@ import {
     FormTop,
     TitleBold,
     NameDetailsRepo,
-    FormBotton,
 } from './styles';
 
+import gitUser from '../../contexts/gitUser';
+
 export default function User() {
+    const { user, repos } = useContext(gitUser);
+
     return (
         <Container>
-            <Image source={logo} />
+            <Barra />
+            <Avatar source={{ uri: `${user.avatar_url}` }} />
+
             <Title>
-                <Text>Faceboook</Text>
+                <Name>{user.name}</Name>
             </Title>
 
             <TextDesc>
-                <Text>
-                    We are working to build community through open source
-                    technology. NB: members must have two-factor auth.
-                </Text>
+                <Bio>{user.bio}</Bio>
             </TextDesc>
 
             <Form>
                 <FormTop>
                     <TitleBold>
-                        <Text>124</Text>
+                        <Text>{user.public_repos}</Text>
                     </TitleBold>
-                    <NameDetailsRepo>Repositorios</NameDetailsRepo>
+                    <NameDetailsRepo>Repositórios</NameDetailsRepo>
                 </FormTop>
 
                 <FormTop>
-                    <TitleBold>0</TitleBold>
+                    <TitleBold>{user.followers}</TitleBold>
                     <NameDetailsRepo>Seguidores</NameDetailsRepo>
                 </FormTop>
                 <FormTop>
-                    <TitleBold>0</TitleBold>
+                    <TitleBold>{user.following}</TitleBold>
                     <NameDetailsRepo>Seguindo</NameDetailsRepo>
                 </FormTop>
             </Form>
 
-            <FormBotton>
-                <TitleBold>hhvm</TitleBold>
+            <List
+                data={repos}
+                keyExtractor={(item) => String(item.id)}
+                renderItem={({ item }) => (
+                    <>
+                        <CardRepository>
+                            <RepoName>{item.name}</RepoName>
 
-                <SubTitle>
-                    A virtual machine for executing programs written in Hack.
-                </SubTitle>
-                <Form>
-                    <SubTitle>
-                        <Text>C++ </Text>
-                    </SubTitle>
-                    <SubTitle>
-                        <Text> | </Text>
-                    </SubTitle>
-                    <SubTitle>
-                        <Text>16.688 stars</Text>
-                    </SubTitle>
-                    <SubTitle>
-                        <Text> | </Text>
-                    </SubTitle>
-                    <SubTitle>
-                        <Text>2.910 forks</Text>
-                    </SubTitle>
-                </Form>
-            </FormBotton>
+                            <RepoDesc>{item.description}</RepoDesc>
+                            <Form>
+                                <SubTitle>
+                                    <RepoLang>{item.language}</RepoLang>
+                                </SubTitle>
+                                <SubTitle>
+                                    <Text> | </Text>
+                                </SubTitle>
+                                <SubTitle>
+                                    <StarCount>
+                                        {item.stargazers_count} stars
+                                    </StarCount>
+                                </SubTitle>
+                                <SubTitle>
+                                    <Text> | </Text>
+                                </SubTitle>
+                                <SubTitle>
+                                    <ForksCount>
+                                        {item.forks_count} forks
+                                    </ForksCount>
+                                </SubTitle>
+                            </Form>
+                        </CardRepository>
+                    </>
+                )}
+            />
         </Container>
     );
 }
